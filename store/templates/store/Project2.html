@@ -23,8 +23,6 @@
 
     <main>
         <section id="cart-items">
-            <h2>العناصر في السلّة 🛍️</h2>
-
             {% if items %}
                 {% for item in items %}
                     <div class="cart-item" style="border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 8px;">
@@ -38,12 +36,12 @@
                 <!-- ✅ زر إفراغ السلة -->
                 <form method="post" action="{% url 'clear_cart' %}">
                     {% csrf_token %}
-                    <button type="submit" style="margin-top: 20px; background-color: rgb(50, 20, 220); color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+                    <button class="btn_cl" type="submit" style="margin-top: 20px; background-color: rgb(64, 121, 157); color: white; padding: 10px 20px; border: none; border-radius: 5px;">
                          إفراغ السلة من القاعدة
                     </button>
                 </form>
             {% else %}
-                <p>📭 لا توجد عناصر في السلة حالياً.</p>
+                <p> لا توجد عناصر في السلة حالياً.</p>
             {% endif %}
         </section>
     </main>
