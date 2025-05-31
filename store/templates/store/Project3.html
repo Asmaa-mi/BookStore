@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكتب المخفّضة</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>الكتب المخفّضة</h1>
+        <nav>
+            <ul>
+             <li><a href="{% url 'home' %}">الرئيسيّة</a></li>
+                <li><a href="{% url 'project2' %}">السلّة</a></li>
+                <li><a href="{% url 'project3' %}">الكتب المخفّضة</a></li>
+                <li><a href="{% url 'project4' %}">المؤلّفون</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="books">
+            <div class="book" data-title="المزدوج" data-price="15">
+                <img src="{% static 'images/sd3.jpg' %}" alt="1">
+                <h3>المزدوج</h3>
+                <p>دوستويفسكي</p>
+                <p>السعر: <del>19$</del> 15$</p>
+                <button onclick="addToCart('المزدوج', 15)">أضف إلى السلة</button>
+            </div>
+            <div class="book" data-title="الفقراء" data-price="17">
+                <img src="{% static 'images/sd4.jpg' %}" alt="2">
+                <h3>الفقراء</h3>
+                <p>دوستويفسكي</p>
+                <p>السعر: <del>25$</del> 17$</p>
+                <button onclick="addToCart('الفقراء', 17)">أضف إلى السلة</button>
+            </div>
+            <div class="book" data-title="التداوي بالفلسفة" data-price="21">
+                <img src="{% static 'images/sd6.jpg' %}" alt="3">
+                <h3>التداوي بالفلسفة</h3>
+                <p>سعيد ناشيد</p>
+                <p>السعر: <del>33$</del> 21$</p>
+                <button onclick="addToCart('التداوي بالفلسفة', 21)">أضف إلى السلة</button>
+            </div>
+            <div class="book" data-title="التأمّل" data-price="19">
+                <img src="{% static 'images/sd22.jpg' %}" alt="4">
+                <h3>التأمّل</h3>
+                <p>أوشو</p>
+                <p>السعر: <del>27$</del> 19$</p>
+                <button onclick="addToCart('التأمّل', 19)">أضف إلى السلة</button>
+            </div>
+            <div class="book" data-title="سحر الترتيب" data-price="13">
+                <img src="{% static 'images/sd23.jpg' %}" alt="5">
+                <h3>سحر</h3>
+                <p>ماري كوندو</p>
+                <p>السعر: <del>27$</del> 13$</p>
+                <button onclick="addToCart('سحر الترتيب', 13)">أضف إلى السلة</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 متجر الكتب</p>
+    </footer>
+
+    <script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>

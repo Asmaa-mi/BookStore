@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلّة التسوّق</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>سلّة التسوّق</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">الرئيسيّة</a></li>
+                <li><a href="{% url 'project2' %}">السلّة</a></li>
+                <li><a href="{% url 'project3' %}">الكتب المخفّضة</a></li>
+                <li><a href="{% url 'project4' %}">المؤلّفون</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="cart-items">
+            <h2>العناصر في السلّة 🛍️</h2>
+
+            {% if items %}
+                {% for item in items %}
+                    <div class="cart-item" style="border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 8px;">
+                        <h3>{{ item.book.title }}</h3>
+                        <p>المؤلف: {{ item.book.author }}</p>
+                        <p>الكمية: {{ item.quantity }}</p>
+                        <p>السعر: {{ item.book.price }}$</p>
+                    </div>
+                {% endfor %}
+
+                <!-- ✅ زر إفراغ السلة -->
+                <form method="post" action="{% url 'clear_cart' %}">
+                    {% csrf_token %}
+                    <button type="submit" style="margin-top: 20px; background-color: rgb(50, 20, 220); color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+                         إفراغ السلة من القاعدة
+                    </button>
+                </form>
+            {% else %}
+                <p>📭 لا توجد عناصر في السلة حالياً.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 متجر الكتب</p>
+    </footer>
+
+</body>
+</html>

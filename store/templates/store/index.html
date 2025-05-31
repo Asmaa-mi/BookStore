@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الكتب</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header class="nav-link">
+        <h1>متجر الكتب</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">الرئيسيّة</a></li>
+                <li><a href="{% url 'project2' %}">السلّة</a></li>
+                <li><a href="{% url 'project3' %}">الكتب المخفّضة</a></li>
+                <li><a href="{% url 'project4' %}">المؤلّفون</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="books">
+            {% if books %}
+                {% for book in books %}
+                    <div class="book" data-title="{{ book.title }}" data-price="{{ book.price }}" data-id="{{book.id}}">
+                        {% if book.image %}
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" alt="لا يوجد صورة">
+                        {% endif %}
+                        <h3>{{ book.title }}</h3>
+                        <p>{{ book.author }}</p>
+                        <p>السعر: {{ book.price }}$</p>
+                        <button onclick="addToCart('{{ book.id }}', '{{ book.title }}', '{{book.price}}')">أضف إلى السلة</button>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>لا توجد كتب حالياً في المتجر.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 متجر الكتب</p>
+    </footer>
+    <script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>
